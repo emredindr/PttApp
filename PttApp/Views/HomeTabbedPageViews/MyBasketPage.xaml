@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.MyBasketPage"
+               IconImageSource="icon_basket.png"
+             Title="Basket"
+             >
+    <StackLayout BackgroundColor="White">
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Padding="20,20,0,0" HeightRequest="50" Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Image Source="icon_basket" HeightRequest="30" WidthRequest="30"></Image>
+                    <Label Text="Sepet" TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                    <Label x:Name="AllProductCount" Padding="0,0,0,0"  TextColor="Black" FontSize="25" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                    <Button x:Name="btnClearAll"  Clicked="AllMyProductClear" BackgroundColor="White" HeightRequest="30" AutomationId="btnClearAll" FontSize="10"   WidthRequest="120" Text="Sepeti Temizle" TextColor="Blue" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"></Button>
+                </StackLayout>
+
+                <StackLayout x:Name="titleCount" Margin="30,10,0,0" Orientation="Horizontal"  Spacing="250">
+                    <Label Text="ÜRÜN"></Label>
+                    <Label Text="ADET"></Label>
+                </StackLayout>
+                <ListView x:Name="myBasketListView" ItemsSource="{Binding .}" BackgroundColor="White" SelectionMode="None" RowHeight="200"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <ViewCell >
+                                <Frame Padding="0" Margin="10" BackgroundColor="White" BorderColor="#dedede" CornerRadius="8">
+                                    <StackLayout>
+                                        <StackLayout Margin="10,5,10,5" Orientation="Horizontal">
+                                            <Label Text="{Binding ProductTitle}" WidthRequest="280" VerticalOptions="Start" TextColor="Black" FontAttributes="Italic"></Label>
+                                            <StackLayout >
+                                                <Frame VerticalOptions="CenterAndExpand" Padding="0" CornerRadius="10" WidthRequest="90" BorderColor="Black" >
+                                                    <StackLayout Padding="3" Spacing="25" Orientation="Horizontal">
+                                                        <Label Margin="2" FontSize="15" Text="-" VerticalTextAlignment="Center"></Label >
+                                                        <Label VerticalTextAlignment="Center" FontSize="15" Text="1"></Label>
+                                                        <Label VerticalTextAlignment="Center" FontSize="15" Text="+"></Label>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Label Margin="12,0,0,0" Text="{Binding ProductPrice,StringFormat='{0}.00 TL'}" FontSize="15" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Start"></Label>
+                                        <StackLayout Padding="0" Margin="10,0,0,0"  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
+                                            <Image Source="delete" HeightRequest="15" WidthRequest="15"></Image>
+                                            <Label Text="ÜRÜNÜ SİL" >
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnClickLabelForDeleteProduct_Tapped" NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="#dedede">
+                                            <StackLayout   Margin="10,10,0,0" Orientation="Horizontal"  Spacing="215">
+                                                <Label Text="Mağaza :"></Label>
+                                                <Label Text="Kargo Ücreti"></Label>
+                                            </StackLayout>
+                                            <StackLayout Margin="10,0,0,0" Padding="0" Orientation="Horizontal"  Spacing="230">
+                                                <Label Padding="0" Margin="0" Text="USTİLMAN :" VerticalTextAlignment="Start" TextColor="Blue" FontSize="10"></Label>
+                                                <Label Padding="0" Margin="0" Text="0.00 TL" FontSize="10" VerticalTextAlignment="Center"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout x:Name="Ozet" >
+                    <Label Margin="12" Text="Sipariş Özeti" TextColor="Black" FontAttributes="Bold" FontSize="20"></Label>
+                    <Frame CornerRadius="8"  BorderColor="#dedede" Margin="10,10">
+                        <StackLayout>
+                            <StackLayout>
+                                <StackLayout   Margin="10,10,0,0" Orientation="Horizontal" >
+                                    <Label x:Name="totalProduct" FontSize="16"></Label>
+                                    <Label Text="ÜRÜN" FontSize="16"></Label>
+                                </StackLayout>
+                                <StackLayout   Margin="10,10,0,0" Orientation="Horizontal"  Spacing="200">
+                                    <Label Text="Ara Toplam:"></Label>
+                                    <Label x:Name="subTotalPrice" HorizontalOptions="EndAndExpand"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout   Margin="10,10,0,0" Orientation="Horizontal"   >
+                                <Label Text="Kargo Toplam:"></Label>
+                                <Label Text="0.00 TL" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout   Margin="10,10,0,0" Orientation="Horizontal"  >
+                                <Label Text="Toplam:"></Label>
+                                <Label x:Name="totalPrice" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Button Margin="10" Text=" Ürünleri Kontrol Ettim" TextColor="White" BackgroundColor="#1a73e8" CornerRadius="10"></Button>
+                </StackLayout>
+                <Label Margin="0,150,0,0" HorizontalOptions="Center" AutomationId="lblHasAnyProduct" FontAttributes="Bold" FontSize="15"  x:Name="Yok" Text="Sepetinizde Hiç Ürün Bulunmamaktadır!"></Label>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.CategoryPage"
+             IconImageSource="icon_category.png"
+             Title="Category">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,0,0,10" BackgroundColor="White">
+                <StackLayout>
+                    <ListView x:Name="categoryListView" VerticalOptions="FillAndExpand" ItemSelected="OnSelected"  VerticalScrollBarVisibility="Never">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Spacing="20" BackgroundColor="{Binding BackgroundColor}">
+                                        <Image Source="{Binding IconSource}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+                                        <Label Text="{Binding Title}" TextColor="Black" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="20" Padding="0,0,10,0">
+                                            <Label Text=">" TextColor="Black" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </StackLayout >
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

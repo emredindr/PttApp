@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.AccountDetailPageViews.AccountPage">
+
+    
+    
+        <StackLayout BackgroundColor="Blue">
+            <Label x:Name="MyUserName" 
+                BackgroundColor="Yellow" 
+                HorizontalOptions="Center" />
+            <Button Text="Cıkıs Yap " 
+                    TextColor="Black" 
+                    BackgroundColor="White"
+                    Clicked="logOutClicked" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"></Button>
+            
+            <StackLayout Padding="0,0,0,0" >
+            
+                <ListView x:Name="accountListViewLogined" ItemsSource="{Binding .}"  RowHeight="35">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding ImageSource}"></Image>
+                                    <Label  Text="{Binding Title}" 
+                                            FontSize="15"
+                                            TextColor="Black"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            VerticalTextAlignment="Center">
+                                    </Label>
+                                </StackLayout >
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+  
+</ContentPage>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.AccountDetailPageViews.RegisterPage"
+             NavigationPage.IconColor="Black"             >
+
+    <NavigationPage.TitleView>
+        <Grid>
+            <Image Source="ptt.png" BackgroundColor="White" Margin="15,0,40,0" WidthRequest="200"/>
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <StackLayout>
+        <Label Text="Üye Ol" TextColor="Black" FontSize="20" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+        <StackLayout>
+            <Frame BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10,10,10,10">
+                <Entry  x:Name="UserNewName" Margin="10,0" Placeholder="Adı" ></Entry>
+            </Frame>
+            <Frame BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10,10,10,10">
+                <Entry x:Name="UserNewSurname" Margin="10,0" Placeholder="Soyadı" ></Entry>
+            </Frame>
+            <Frame BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10,10,10,10">
+                <Entry x:Name="UserNewEmail" Margin="10,0"   Placeholder="E-Posta Adresi" ></Entry>
+            </Frame>
+            <Frame BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10,10,10,10">
+                <Entry x:Name="UserNewPassword" Margin="10,0" Placeholder="Şifre" IsPassword="False"></Entry>
+            </Frame>
+            <Frame BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10,10,10,10">
+                <Entry Margin="10,0" x:Name="UserNewPasswordAgain" Placeholder="Şifre Tekrar" IsPassword="True"></Entry>
+            </Frame>
+            <StackLayout Orientation="Horizontal">
+
+
+                <RadioButton x:Name="UserRegisterLaw" CheckedChanged="OnColorsRadioButtonCheckedChanged" ></RadioButton>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Üyelik Sözleşmesi" TextColor="Blue" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://www.pttavm.com/sayfa/uyelik-sozlesmesi.html" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" ve " />
+                            <Span Text="Gizlilik Politikası" TextColor="Blue" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://www.pttavm.com/sayfa/gizlilik-politikasi.html" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text="nı okudum ve onaylıyorum." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+        <Button x:Name="SignUpButton"
+                Text="Üye Ol" Padding="10,10,10,10"
+                Clicked="RegisterSignUpClicked"
+                Margin="10,0"
+                BorderColor="Black"
+                BorderWidth="1"
+                BorderRadius="20"
+                BackgroundColor="#1a73e8"
+                TextColor="White"/>
+    </StackLayout>
+</ContentPage>

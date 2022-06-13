@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.MyAccountPage"
+               IconImageSource="icon_account.png"
+             Title="Account">
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="10,0,10,0" BackgroundColor="White">
+            <Label x:Name="userInfo" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
+            <Button x:Name="btnLogin" Text="Giriş Yap"  
+                Margin="10,10"
+                BorderRadius="20"
+                Clicked="LoginOnClicked"
+                BackgroundColor="#1a73e8"
+                TextColor="White" 
+                    />
+
+            <Button x:Name="btnRegister" Text="Üye Ol" Padding="10,0,0,10" 
+                Margin="10,0"
+                BorderColor="Black"
+                BorderWidth="1"
+                BorderRadius="20"
+                Clicked="RegisterOnClicked"
+                BackgroundColor="White"
+                TextColor="Black" />
+            <StackLayout  x:Name="logoutStackLayout"  Padding="0">
+                <ListView x:Name="accountListView" ItemsSource="{Binding .}" ItemSelected="OnSelected" RowHeight="35">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label  Text="{Binding Title}" 
+                                            FontSize="15"  
+                                            
+                                            TextColor="Black"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            VerticalTextAlignment="Center">
+                                    </Label>
+                                </StackLayout >
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+
+            <StackLayout x:Name="loginedStackLayout" Padding="0,0,0,0" VerticalOptions="End">
+
+
+                <StackLayout Orientation="Vertical">
+                    <CollectionView  Margin="0" HeightRequest="100"  x:Name="accountListViewLoginedScrol" VerticalScrollBarVisibility="Never" ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="0" Orientation="Vertical" Padding="1,20,1,20">
+                                    <Button HorizontalOptions="Center" BackgroundColor="#dedede" VerticalOptions="Center" CornerRadius="20" Text="{Binding Title}" ></Button>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+
+                <ListView x:Name="accountListViewLogined" ItemsSource="{Binding .}" VerticalScrollBarVisibility="Never"   ItemSelected="OnSelectedLogin" RowHeight="35">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding ImageSource}" WidthRequest="20"></Image>
+                                    <Label  Text="{Binding Title}" 
+                                            FontSize="15"
+                                            AutomationId="MyLabel2"
+                                            TextColor="Black"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            VerticalTextAlignment="Center">
+                                    </Label>
+                                </StackLayout >
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.CategoryDetailPageViews.ProductDetailPage"
+             NavigationPage.IconColor="Black"
+             NavigationPage.HasBackButton="True"
+             >
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" BackgroundColor="White">
+            <Image   Margin="30,0,0,0" Source="ptt.png" BackgroundColor="White"  WidthRequest="200"/>
+            <ImageButton BackgroundColor="White" Margin="30,0,20,0" Source="share" HeightRequest="20" WidthRequest="50"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" ></ImageButton>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <ScrollView Orientation="Vertical">
+
+            <StackLayout>
+                <Frame WidthRequest="350" HeightRequest="350" BackgroundColor="White" >
+                    <Image Margin="10" HeightRequest="350" WidthRequest="350" HorizontalOptions="CenterAndExpand" 
+                           Source="{Binding ProductIconSource}" ></Image>
+                </Frame>
+                <Label Margin="10,3,3,3" Padding="2" Text="{Binding Title}" TextColor="Black"  FontAttributes="None" FontSize="15" ></Label>
+                <StackLayout Margin="8,0,0,0" Orientation="Horizontal">
+                    <Image Source="star"></Image>
+                    <Image  Source="star"></Image>
+                    <Image Source="star"></Image>
+                    <Image Source="star"></Image>
+                    <Image Source="star"></Image>
+                    <Label Text="Bu ürüne henüz yorum yapılmadı." TextColor="Gray" ></Label>
+                </StackLayout>
+                <Label Margin="10" Text="{Binding PriceWithTL }" TextColor="#45ac4c" FontSize="Large" FontAttributes="Bold"></Label>
+                <Frame Margin="15,0,5,5" Padding="0" CornerRadius="8" HeightRequest="60" WidthRequest="140" BackgroundColor="White" VerticalOptions="Start" HorizontalOptions="Start" >
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" Margin="0" HeightRequest="50" WidthRequest="140" BackgroundColor="White">
+                        <Button BackgroundColor="White" Text="-" FontAttributes="Bold" FontSize="30" HeightRequest="50"  WidthRequest="40" ></Button>
+                        <Label Margin="5,10,5,10" BackgroundColor="#dedede" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="1" HeightRequest="50" WidthRequest="40"></Label>
+                        <Button BackgroundColor="White" Text="+" FontAttributes="Bold"  FontSize="25" HeightRequest="50"  WidthRequest="40" ></Button>
+                    </StackLayout>
+                </Frame>
+                <StackLayout Margin="10,5,0,0" Orientation="Horizontal" >
+                    <Image Source="kargo" WidthRequest="25" HeightRequest="25"></Image>
+                    <Label Text="Kargo Bedava" TextColor="Black" FontSize="15"></Label>
+                </StackLayout>
+                <StackLayout Margin="10,5,0,0" Orientation="Horizontal">
+                    <Image Source="kargomat" WidthRequest="25" HeightRequest="25"></Image>
+                    <Label Text="Kargomata Teslimat"  TextColor="Black" FontSize="15"></Label>
+                </StackLayout>
+                <StackLayout Margin="10,5,0,0" Orientation="Horizontal">
+                    <Image Source="toptan"  WidthRequest="25" HeightRequest="25"></Image>
+                    <Label Text="Toptan Fiyat İste"  TextColor="Black" FontSize="15"></Label>
+                </StackLayout>
+                <StackLayout Padding="20,5,10,5" Orientation="Horizontal" >
+                    <Button  WidthRequest="185" Clicked="addToBasket" Text="Sepete Ekle" TextColor="White" BackgroundColor="#1a73e8" BorderWidth="10" ></Button>
+                    <Button WidthRequest="185" Text="Hemen Al" Clicked="buyNow" TextColor="White" BackgroundColor="#ffce38" BorderWidth="10"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.AccountDetailPageViews.LoginPage"
+             NavigationPage.IconColor="Black"
+             NavigationPage.HasNavigationBar="True">
+
+    <NavigationPage.TitleView>
+        <Grid>
+            <Image Source="ptt.png" BackgroundColor="White" Margin="15,0,40,0" WidthRequest="200"/>
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <StackLayout>
+            <Label Text="Giriş Yap" TextColor="Black" FontSize="20" FontAttributes="Bold" Padding="10,0,0,0"></Label>
+            <Frame BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10,10,10,10">
+            <Entry x:Name="UserLoginEmail" Margin="10,0" Placeholder="E-Posta veya Kullancı Adı"  ></Entry>
+            </Frame>
+        <Frame 
+                BorderColor="Gray"
+                   CornerRadius="1"
+                   Padding="15,2,2,2"
+                   Margin="10">
+            <Entry x:Name="UserLoginPassword" Placeholder="Şifre" IsPassword="True" ClearButtonVisibility="Never"></Entry>
+            </Frame>
+            <Button Margin="0,0,20,0" 
+                    Padding="10,10,10,10" 
+                    HorizontalOptions="End"
+                    BackgroundColor="White"
+                    FontSize="12"
+                    Text="Şifremi Unuttum"
+                    Clicked="ForgetPasswordClicked"></Button>
+
+        <Button Clicked="LoginButtonClicked"
+                Text="Giriş Yap"
+                Margin="10,10"
+                BorderRadius="20"
+                BackgroundColor="#1a73e8"
+                TextColor="White" />
+            
+            <Button 
+                Text="Üye Ol" Padding="10,0,0,10"
+                Margin="10,0"
+                BorderColor="Black"
+                BorderWidth="1"
+                BorderRadius="20"
+                Clicked="RegisterButtonClicked"   
+                BackgroundColor="White"
+                TextColor="Black"/>
+
+            <Button Text="Facebook ile Devam Et"
+                    ContentLayout="Left,5" 
+                    Margin="0,25,0,0"
+                    Image="facebook_icon" 
+                    TextColor="White" 
+                    BackgroundColor="#3f5c8a" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" 
+                    Padding="5,5,5,5" 
+                    WidthRequest="200"
+                    HeightRequest="35" />
+            <Button Text="Google'da oturum aç"
+                    ContentLayout="Left,5" 
+                    Margin="0,15,0,0"
+                    Image="google20px_icon" 
+                    TextColor="Black" 
+                    BackgroundColor="White" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" 
+                    Padding="5,5,5,5" 
+                    WidthRequest="220"
+                    HeightRequest="45" 
+                    BorderWidth="1"
+                    BorderColor="Black"/>
+            
+        </StackLayout>
+   
+</ContentPage>

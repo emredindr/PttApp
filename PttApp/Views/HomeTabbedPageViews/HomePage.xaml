@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="PttApp.Views.HomeTabbedPageViews.HomePage"
+             mc:Ignorable="d"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             IconImageSource="icon_home.png" BackgroundColor="#F4F4F4"
+             Title="Home">
+
+    <StackLayout BackgroundColor="White">
+            <Frame Margin="10,13,10,10" Padding="0" CornerRadius="13">
+                <SearchBar Margin="0" Focused="SearchbarFocussed"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" Background="#F4F4F4"  Placeholder="Ürün Ara" FontSize="Medium" FontAttributes="Italic"/>
+            </Frame>
+            <ScrollView  VerticalOptions="Start" Orientation="Vertical" Padding="15" BackgroundColor="#F4F4F4" VerticalScrollBarVisibility="Never">
+                <StackLayout  VerticalOptions="FillAndExpand">
+                    <ScrollView BackgroundColor="#F4F4F4" VerticalOptions="FillAndExpand"  >
+                        <StackLayout VerticalOptions="End">
+                            <StackLayout  Orientation="Vertical" HeightRequest="120" BackgroundColor="#F4F4F4">
+                                <CollectionView HeightRequest="120"  x:Name="collectionViewListHorizontal" ItemsLayout="HorizontalList">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Orientation="Vertical" >
+                                                <Image Source="{Binding IconSource}" HeightRequest="35" WidthRequest="35" Margin="10,0,0,0">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnClickImageForMainIcon_Tapped" NumberOfTapsRequired="1" CommandParameter="{Binding .}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <StackLayout HorizontalOptions="Center" Orientation="Vertical" HeightRequest="85" >
+                                                    <Label Text="{Binding Title}" FontSize = "13" WidthRequest="70" HorizontalTextAlignment="Center"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                    <cv:CarouselViewControl x:Name="cvBanners"  ShowIndicators="true" IndicatorsShape="Circle" IndicatorsTintColor="LightGray"
+                                    CurrentPageIndicatorTintColor="Blue" Orientation="Horizontal" InterPageSpacing="0" 
+                                    HeightRequest="170" ItemsSource="{Binding Banners}" HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="StartAndExpand" AnimateTransition="False" >
+                        <cv:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Image Source="{Binding Image}" Aspect="Fill" HorizontalOptions="FillAndExpand"/>
+                                </Grid>
+                            </DataTemplate>
+                        </cv:CarouselViewControl.ItemTemplate>
+                    </cv:CarouselViewControl>
+
+                    <ScrollView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#d0e4ff" HeightRequest="170" >
+                        <StackLayout>
+                            <Label Margin="10,10" Text="Elektronikte En Popüler Kategoriler" TextColor="#1762C5" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Body" ></Label>
+                                <Grid RowSpacing="20" Margin="20,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+
+                                    <ScrollView Orientation="Horizontal"  VerticalOptions="Center" HorizontalOptions="Center" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" >
+                                        <StackLayout x:Name="stacklayoutElektronikler"  BindableLayout.ItemsSource="{Binding elektronikPopular}" Orientation="Horizontal" Spacing="20" VerticalOptions="Center" >
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Frame CornerRadius="10" 
+                                                           HorizontalOptions="Center" 
+                                                           VerticalOptions="Start"
+                                                           HasShadow="True"
+                                                           IsClippedToBounds="True"
+                                                           Padding="0">
+                                                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" >
+                                                            <Frame Padding="0" HasShadow="False"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="10" HeightRequest="70" WidthRequest="100">
+                                                            <Image Source="{Binding ImageSource}" WidthRequest="75" Aspect="Fill" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="OnClickImageForPopuler_Tapped" NumberOfTapsRequired="1" CommandParameter="{Binding .}" />
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                        </Frame>
+                                                        <Label HorizontalTextAlignment="Center" WidthRequest="70" Padding="0,0,0,5" Margin="0,0,0,0" Text="{Binding Title}" TextColor="Black" FontAttributes="Bold" FontSize="10" />
+                                                        </StackLayout>
+                                                    </Frame>
+
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </ScrollView>
+                            </Grid>
+                        </StackLayout>
+                    </ScrollView>
+                    <ScrollView  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#bfffc4" HeightRequest="170" >
+                        <StackLayout>
+                            <Label Margin="10,10" Text="Anne ve Bebekte En Popüler Kategoriler" TextColor="#5a855d" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Body" ></Label>
+                            <Grid RowSpacing="20" Margin="20,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+
+                                <ScrollView Orientation="Horizontal"  VerticalOptions="Center" HorizontalOptions="Center" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" >
+                                    <StackLayout x:Name="stacklayoutBebekler"  BindableLayout.ItemsSource="{Binding bebekPopular}" Orientation="Horizontal" Spacing="20" VerticalOptions="Center" >
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame CornerRadius="10" 
+                                                           HorizontalOptions="Center" 
+                                                           VerticalOptions="Start"
+                                                           HasShadow="True"
+                                                           IsClippedToBounds="True"
+                                                           Padding="0">
+                                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" >
+                                                        <Frame Padding="0" HasShadow="False"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="10" HeightRequest="70" WidthRequest="100">
+
+                                                            <Image Source="{Binding ImageSource}" WidthRequest="75" Aspect="Fill" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="OnClickImageForPopuler_Tapped" NumberOfTapsRequired="1" CommandParameter="{Binding .}" />
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                        </Frame>
+                                                        <Label HorizontalTextAlignment="Center" WidthRequest="70" Padding="0,0,0,5" Margin="0,0,0,0" Text="{Binding Title}" TextColor="Black" FontAttributes="Bold" FontSize="10" />
+                                                    </StackLayout>
+                                                </Frame>
+
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                            </Grid>
+                        </StackLayout>
+                    </ScrollView>
+
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+</ContentPage>

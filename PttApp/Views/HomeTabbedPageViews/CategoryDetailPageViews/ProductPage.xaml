@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp.Views.HomeTabbedPageViews.CategoryDetailPageViews.ProductPage"
+             NavigationPage.IconColor="Black"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:imageConverter="clr-namespace:PttApp.Helpers">
+
+    
+    <NavigationPage.TitleView>
+        <Frame Margin="10" Padding="0" CornerRadius="15" Background="#F4F4F4">
+            <SearchBar HeightRequest="35"   HorizontalOptions="Center"     Placeholder="Ürün Ara" FontSize="Medium" FontAttributes="Italic"/>
+        </Frame>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <imageConverter:ImageSourceConverter x:Key="keyImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Background="White">
+        <StackLayout Background="White" >
+            <!--<StackLayout>
+                --><!--<Frame Margin="10,13,10,10" Padding="0" CornerRadius="13">
+                    <SearchBar Margin="0"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" Background="#F4F4F4"  Placeholder="Ürün Ara" FontSize="Medium" FontAttributes="Italic"/>
+                </Frame>--><!--
+                
+            </StackLayout>-->
+            <Label Margin="5,0" Padding="0" x:Name="lblProductCategoryName"  TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+        </StackLayout>
+
+        <ScrollView  VerticalScrollBarVisibility="Never" Orientation="Both" HorizontalOptions="Start" VerticalOptions="FillAndExpand" BackgroundColor="#F4F4F4">
+            <StackLayout>
+                <flv:FlowListView x:Name="productFlowList" FlowColumnCount="2" SeparatorVisibility="Default" HasUnevenRows="True">
+                    <flv:FlowListView.FlowColumnTemplate >
+                        <DataTemplate >
+                            <Frame CornerRadius="10" 
+                                           WidthRequest="200"
+                                           HeightRequest="300"
+                                                           HorizontalOptions="Center" 
+                                                           VerticalOptions="Start"
+                                                           HasShadow="True"
+                                                           IsClippedToBounds="True"
+                                                           Padding="0" Margin="0,3,0,3">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White" Padding="10">
+                                    <Frame Padding="0" HasShadow="False"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="1" HeightRequest="120" WidthRequest="150">
+                                        <Image Source="{Binding ProductIconSource}" Aspect="Fill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" WidthRequest="100">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnClickProductImage_Tapped" NumberOfTapsRequired="1" CommandParameter="{Binding .}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Frame>
+                                    <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="200"  Text="{Binding Title}" TextColor="Black" FontAttributes="Bold" FontSize="13" />
+                                    <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center"   Text="{Binding PriceWithTL}" TextColor="Green" FontAttributes="Bold" FontSize="13"/>
+                                    <Button BackgroundColor="#d0e4ff" VerticalOptions="EndAndExpand" Text="Sepete Ekle" TextColor="#1762C5" Clicked="OnClickedAddBasket" BindingContext="{Binding .}"></Button>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+
+                </flv:FlowListView>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

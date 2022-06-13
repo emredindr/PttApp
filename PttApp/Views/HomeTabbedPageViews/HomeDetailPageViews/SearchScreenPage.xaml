@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PttApp3.Views.HomeTabbedPageViews.HomeDetailPageViews.SearchScreenPage"
+             NavigationPage.IconColor="Black" >
+
+    <NavigationPage.TitleView>
+        <Frame Margin="10" Padding="0" CornerRadius="15" Background="#F4F4F4">
+            <SearchBar TextChanged="OnTextChanged" HeightRequest="35"   HorizontalOptions="Center"     Placeholder="Ürün Ara" FontSize="Medium" FontAttributes="Italic"/>
+        </Frame>
+    </NavigationPage.TitleView>
+
+
+    <StackLayout  BackgroundColor="White" Padding="10,5,5,5">
+
+        <ListView x:Name="lstView" BackgroundColor="White" ItemsSource="{Binding .}" ItemSelected="OnSelected"
+                 RowHeight="70" >
+
+
+            <ListView.Header>
+                <ContentView Padding="0,5" BackgroundColor="#fff">
+                    <Label Margin="10" FontSize="Medium" TextColor="#000"
+                   Text="Bulunan Ürünler"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"></Label>
+                </ContentView>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"  VerticalOptions="End"  Padding="15">
+                            <Image  Source="{Binding IconSource}" ></Image>
+                            <StackLayout Orientation="Vertical">
+                                <Label TextColor="Black" FontSize="Micro" Text="{Binding Title}"></Label>
+                                <Label TextColor="Black" FontSize="Small" Text="{Binding Price}"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
